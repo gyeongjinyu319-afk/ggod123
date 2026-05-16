@@ -1,0 +1,40 @@
+name: HolyGrailWar
+version: 1.0
+main: com.holygrailwar.HolyGrailWar
+description: 마크에서 성배전쟁을 펼치세요!
+authors:
+  - gyeongjinyu319
+
+commands:
+  감자:
+    description: 감자교 명령어
+    usage: /감자 [명령어]
+    aliases: [potato]
+  고구마:
+    description: 고구마교 명령어
+    usage: /고구마 [명령어]
+    aliases: [sweetpotato]
+  성배:
+    description: 성배 명령어
+    usage: /성배 [명령어]
+    aliases: [grail]
+  축복:
+    description: 축복 명령어
+    usage: /축복 [플레이어]
+    aliases: [blessing]
+  저주:
+    description: 저주 명령어
+    usage: /저주 [플레이어]
+    aliases: [curse]
+  교황:
+    description: 교황 선정
+    usage: /교황 [투표/결과]
+    aliases: [pope]
+  화폐:
+    description: 화폐 조회
+    usage: /화폐 [플레이어]
+    aliases: [currency]
+  통계:
+    description: 전쟁 통계
+    usage: /통계
+    aliases: [stats]

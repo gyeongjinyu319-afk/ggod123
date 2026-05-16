@@ -1,0 +1,70 @@
+# Holy Grail War 플러그인 설정
+
+# 게임 설정
+game:
+  enabled: true
+  difficulty: hard
+  mode: ffa  # ffa (자유전), team (팀전)
+
+# 진영 설정
+factions:
+  potato:
+    name: "감자교"
+    color: "YELLOW"
+    max_members: 30
+  sweet_potato:
+    name: "고구마교"
+    color: "LIGHT_PURPLE"
+    max_members: 30
+
+# 화폐 설정
+currency:
+  potato_coin:
+    name: "감자코인"
+    initial: 1000
+  sweet_potato_token:
+    name: "고구마토큰"
+    initial: 1000
+
+# 축복/저주 설정
+blessings:
+  duration: 600  # 초 단위
+  curse_duration: 300
+
+# 교황 설정
+pope:
+  election_interval: 3600  # 1시간
+  duration: 1800  # 30분
+  benefits:
+    - speed_2
+    - strength_2
+    - regeneration_2
+
+# 로또 설정
+lottery:
+  ticket_price: 100
+  draw_interval: 600  # 10분
+  prize_pool: 10000
+
+# 이벤트 설정
+events:
+  rain:
+    enabled: true
+    interval: 1200
+  lightning:
+    enabled: true
+    interval: 2400
+  ufo:
+    enabled: true
+    interval: 3600
+  virus:
+    enabled: true
+    interval: 1800
+
+# 메시지
+messages:
+  welcome: "성배전쟁에 오신 것을 환영합니다!"
+  faction_joined: "진영에 입교했습니다!"
+  insufficient_funds: "자금이 부족합니다!"
+  blessed: "축복을 받았습니다!"
+  cursed: "저주를 받았습니다!"

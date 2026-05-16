@@ -1,0 +1,77 @@
+package com.holygrailwar.managers;
+
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
+import java.util.*;
+
+public class CurrencyManager {
+    private JavaPlugin plugin;
+    private Map<String, Double> potatoCoins = new HashMap<>(); // 감자코인
+    private Map<String, Double> sweetPotatoTokens = new HashMap<>(); // 고구마토큰
+    private Map<String, Integer> lotteryTickets = new HashMap<>(); // 로또 티켓
+
+    public CurrencyManager(JavaPlugin plugin) {
+        this.plugin = plugin;
+    }
+
+    // 감자코인 추가
+    public void addPotatoCoins(Player player, double amount) {
+        String uuid = player.getUniqueId().toString();
+        potatoCoins.put(uuid, potatoCoins.getOrDefault(uuid, 0.0) + amount);
+        player.sendMessage("§e감자코인 " + amount + "개를 획득했습니다!");
+    }
+
+    // 감자코인 차감
+    public boolean removePotatoCoins(Player player, double amount) {
+        String uuid = player.getUniqueId().toString();
+        double balance = potatoCoins.getOrDefault(uuid, 0.0);
+        if (balance >= amount) {
+            potatoCoins.put(uuid, balance - amount);
+            return true;
+        }
+        player.sendMessage("§c감자코인이 부족합니다!");
+        return false;
+    }
+
+    // 감자코인 조회
+    public double getPotatoCoins(Player player) {
+        return potatoCoins.getOrDefault(player.getUniqueId().toString(), 0.0);
+    }
+
+    // 고구마토큰 추가
+    public void addSweetPotatoTokens(Player player, double amount) {
+        String uuid = player.getUniqueId().toString();
+        sweetPotatoTokens.put(uuid, sweetPotatoTokens.getOrDefault(uuid, 0.0) + amount);
+        player.sendMessage("§d고구마토큰 " + amount + "개를 획득했습니다!");
+    }
+
+    // 고구마토큰 차감
+    public boolean removeSweetPotatoTokens(Player player, double amount) {
+        String uuid = player.getUniqueId().toString();
+        double balance = sweetPotatoTokens.getOrDefault(uuid, 0.0);
+        if (balance >= amount) {
+            sweetPotatoTokens.put(uuid, balance - amount);
+            return true;
+        }
+        player.sendMessage("§c고구마토큰이 부족합니다!");
+        return false;
+    }
+
+    // 고구마토큰 조회
+    public double getSweetPotatoTokens(Player player) {
+        return sweetPotatoTokens.getOrDefault(player.getUniqueId().toString(), 0.0);
+    }
+
+    // 로또 티켓 구매
+    public void buyLotteryTicket(Player player, int amount) {
+        String uuid = player.getUniqueId().toString();
+        lotteryTickets.put(uuid, lotteryTickets.getOrDefault(uuid, 0) + amount);
+        player.sendMessage("§6로또 티켓 " + amount + "장을 구매했습니다!");
+    }
+
+    // 로또 당첨
+    public void winLottery(Player player, double prizeAmount) {
+        player.sendMessage("§c§l★ 로또 당첨! " + prizeAmount + "골드 획득! ★");
+        addPotatoCoins(player, prizeAmount);
+    }
+}

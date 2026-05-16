@@ -1,0 +1,74 @@
+package com.holygrailwar.managers;
+
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
+import java.util.*;
+
+public class FactionManager {
+    private JavaPlugin plugin;
+    private Map<String, String> playerFactions = new HashMap<>(); // UUID -> 진영
+    private Map<String, Double> donations = new HashMap<>(); // UUID -> 헌금액
+    private String currentPope = null;
+    private String popeLoser = null;
+
+    public FactionManager(JavaPlugin plugin) {
+        this.plugin = plugin;
+    }
+
+    // 진영 입교
+    public void joinFaction(Player player, String faction) {
+        if (!faction.equals("감자교") && !faction.equals("고구마교")) {
+            player.sendMessage("§c올바른 진영을 선택하세요: 감자교 또는 고구마교");
+            return;
+        }
+        playerFactions.put(player.getUniqueId().toString(), faction);
+        player.sendMessage("§a" + faction + "에 입교했습니다!");
+    }
+
+    // 진영 조회
+    public String getFaction(Player player) {
+        return playerFactions.getOrDefault(player.getUniqueId().toString(), "없음");
+    }
+
+    // 헌금
+    public void donate(Player player, double amount) {
+        String uuid = player.getUniqueId().toString();
+        donations.put(uuid, donations.getOrDefault(uuid, 0.0) + amount);
+        player.sendMessage("§a" + amount + "골드를 헌금했습니다!");
+    }
+
+    // 교황 선정 투표
+    public void votePope(Player player, String candidate) {
+        if (!playerFactions.containsKey(player.getUniqueId().toString())) {
+            player.sendMessage("§c먼저 진영에 입교하세요!");
+            return;
+        }
+        player.sendMessage("§a" + candidate + "에게 투표했습니다!");
+    }
+
+    // 교황 설정
+    public void setPope(String playerName) {
+        currentPope = playerName;
+        plugin.getServer().broadcastMessage("§6" + playerName + "이(가) 새로운 교황으로 선정되었습니다!");
+    }
+
+    // 현재 교황 조회
+    public String getCurrentPope() {
+        return currentPope != null ? currentPope : "없음";
+    }
+
+    // 패배한 교황 설정
+    public void setPopeLoser(String playerName) {
+        popeLoser = playerName;
+    }
+
+    // 패배한 교황 조회
+    public String getPopeLoser() {
+        return popeLoser != null ? popeLoser : "없음";
+    }
+
+    // 진영별 멤버 수
+    public int getFactionCount(String faction) {
+        return (int) playerFactions.values().stream().filter(f -> f.equals(faction)).count();
+    }
+}

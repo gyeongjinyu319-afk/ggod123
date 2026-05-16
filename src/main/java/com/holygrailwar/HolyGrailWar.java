@@ -1,0 +1,61 @@
+package com.holygrailwar;
+
+import org.bukkit.plugin.java.JavaPlugin;
+import com.holygrailwar.managers.FactionManager;
+import com.holygrailwar.managers.CurrencyManager;
+import com.holygrailwar.managers.BlessingManager;
+import com.holygrailwar.commands.*;
+import com.holygrailwar.listeners.*;
+
+public class HolyGrailWar extends JavaPlugin {
+    private static HolyGrailWar instance;
+    private FactionManager factionManager;
+    private CurrencyManager currencyManager;
+    private BlessingManager blessingManager;
+
+    @Override
+    public void onEnable() {
+        instance = this;
+        
+        // 설정 파일 생성
+        saveDefaultConfig();
+        
+        // 매니저 초기화
+        factionManager = new FactionManager(this);
+        currencyManager = new CurrencyManager(this);
+        blessingManager = new BlessingManager(this);
+        
+        // 명령어 등록
+        getCommand("감자").setExecutor(new PotatoCommand(this));
+        getCommand("고구마").setExecutor(new SweetPotatoCommand(this));
+        getCommand("성배").setExecutor(new GrailCommand(this));
+        
+        // 이벤트 등록
+        getServer().getPluginManager().registerEvents(new PlayerEventListener(this), this);
+        getServer().getPluginManager().registerEvents(new EntityEventListener(this), this);
+        
+        getLogger().info("[HolyGrailWar] Holy Grail War 플러그인이 활성화되었습니다!");
+        getLogger().info("[HolyGrailWar] 감자교 vs 고구마교 성배전쟁 시작!");
+    }
+
+    @Override
+    public void onDisable() {
+        getLogger().info("[HolyGrailWar] Holy Grail War 플러그인이 비활성화되었습니다.");
+    }
+
+    public static HolyGrailWar getInstance() {
+        return instance;
+    }
+
+    public FactionManager getFactionManager() {
+        return factionManager;
+    }
+
+    public CurrencyManager getCurrencyManager() {
+        return currencyManager;
+    }
+
+    public BlessingManager getBlessingManager() {
+        return blessingManager;
+    }
+}

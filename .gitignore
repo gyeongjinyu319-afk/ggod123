@@ -1,5 +1,9 @@
 # Maven
 target/
+*.jar
+*.war
+*.rar
+*.ear
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -10,29 +14,23 @@ dependency-reduced-pom.xml
 
 # IDE
 .idea/
-.vscode/
 *.iml
 *.iws
 *.ipr
-*.classpath
-*.project
-.settings/
-
-# Build
-bin/
-build/
-out/
+.vscode/
+*.code-workspace
 
 # OS
 .DS_Store
 Thumbs.db
 
+# Build
+bin/
+build/
+
 # Gradle
 .gradle/
-gradle-app.setting
-!gradle-wrapper.jar
+gradle-wrapper.jar
 
-# Other
-*.log
-*.class
-.metadata/
+# LocalBuildInfo
+local.properties

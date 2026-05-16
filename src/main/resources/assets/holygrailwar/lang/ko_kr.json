@@ -1,0 +1,15 @@
+{
+  "holygrailwar.faction.potato": "감자교",
+  "holygrailwar.faction.sweet_potato": "고구마교",
+  "holygrailwar.currency.potato_coin": "감자코인",
+  "holygrailwar.currency.sweet_potato_token": "고구마토큰",
+  "holygrailwar.blessing.blessed": "축복을 받았습니다!",
+  "holygrailwar.blessing.cursed": "저주를 받았습니다!",
+  "holygrailwar.pope.elected": "새로운 교황이 선정되었습니다!",
+  "holygrailwar.pope.defeated": "교황이 패배했습니다!",
+  "holygrailwar.grail.wish": "성배에 소원을 빌었습니다!",
+  "holygrailwar.event.rain": "하늘에서 비가 내립니다...",
+  "holygrailwar.event.lightning": "번개가 내려칩니다!",
+  "holygrailwar.event.ufo": "UFO가 나타났습니다!",
+  "holygrailwar.event.virus": "바이러스가 퍼지고 있습니다!"
+}

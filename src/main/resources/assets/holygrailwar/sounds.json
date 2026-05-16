@@ -1,0 +1,22 @@
+{
+  "holygrailwar.blessing": {
+    "sounds": [
+      "note/pling"
+    ]
+  },
+  "holygrailwar.curse": {
+    "sounds": [
+      "block/bell/hit"
+    ]
+  },
+  "holygrailwar.pope_election": {
+    "sounds": [
+      "entity/firework/launch"
+    ]
+  },
+  "holygrailwar.pope_defeat": {
+    "sounds": [
+      "entity/ender_dragon/death"
+    ]
+  }
+}
